@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
 
     public float moveSpeed = 7f;
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
 
         // Move the object along the X axis
-        transform.Translate(Vector3.right * moveInput * moveSpeed * Time.deltaTime);
+
+        rb.MovePosition(Vector3.right * moveInput * moveSpeed * Time.deltaTime);
     }
 }
