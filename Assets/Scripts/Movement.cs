@@ -1,26 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Movement : MonoBehaviour
 {
+    public Rigidbody rb; // Reference to the Rigidbody
+    public float moveSpeed = 5f; // Speed of the movement
 
-    public float moveSpeed = 7f;
-    public Rigidbody rb;
-
-    // Start is called before the first frame update
-    void Start()
+    void FixedUpdate()
     {
-        Debug.Log("mirinda a inceput");
-    }
+        // Get input from the user (horizontal axis)
+        float moveX = Input.GetAxis("Horizontal") * moveSpeed;
 
-    void Update()
-    {
-        // Get horizontal input (A/D keys or left/right arrow keys)
-        float moveInput = Input.GetAxis("Horizontal");
-
-        // Move the object along the X axis
-
-        rb.MovePosition(Vector3.right * moveInput * moveSpeed * Time.deltaTime);
+        // Set the velocity for movement on the X-axis only
+        rb.velocity = new Vector3(moveX, rb.velocity.y, 0);
     }
 }
