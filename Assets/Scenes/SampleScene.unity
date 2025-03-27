@@ -1048,10 +1048,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121627417}
+  - component: {fileID: 2121627418}
   - component: {fileID: 2121627416}
   - component: {fileID: 2121627415}
   - component: {fileID: 2121627414}
-  - component: {fileID: 2121627418}
   - component: {fileID: 2121627419}
   m_Layer: 0
   m_Name: miranda
@@ -1151,8 +1151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177185ed7282b0e45b40e438559ebe83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2121627419}
-  moveSpeed: 10
 --- !u!54 &2121627419
 Rigidbody:
   m_ObjectHideFlags: 0
