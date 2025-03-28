@@ -1,15 +1,17 @@
 using UnityEngine;
+using Unity.Asse
 
 
 public class Miranda : MonoBehaviour
 {
-    private GameObject 
+    private GameObject bulletPrefab;
     private Rigidbody rb; // Reference to the Rigidbody
     private float moveSpeed = 5f; // Speed of the movement
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        bulletPrefab = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Prefabs/YourPrefabName.prefab");
     }
 
     void FixedUpdate()
@@ -25,6 +27,6 @@ public class Miranda : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletP)
+        GameObject bullet = Instantiate(bulletPrefab);
     }
 }
