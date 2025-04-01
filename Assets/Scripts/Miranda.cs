@@ -11,10 +11,10 @@ public class Miranda : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        bulletPrefab = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Prefabs/YourPrefabName.prefab");
+        bulletPrefab = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Bullet.prefab");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float moveX = Input.GetAxis("Horizontal") * moveSpeed;
         rb.velocity = new Vector3(moveX, rb.velocity.y, 0);
@@ -27,6 +27,6 @@ public class Miranda : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab);
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
     }
 }
