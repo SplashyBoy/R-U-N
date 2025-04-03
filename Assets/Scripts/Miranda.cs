@@ -5,6 +5,7 @@ using UnityEditor;
 public class Miranda : MonoBehaviour
 {
     private GameObject bulletPrefab;
+    private GameObject bullets;
     private Rigidbody rb;
     private float moveSpeed = 5f;
 
@@ -12,6 +13,7 @@ public class Miranda : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         bulletPrefab = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Bullet.prefab");
+        bullets = GameObject.FindGameObjectWithTag("BulletManager");
     }
 
     void Update()
@@ -27,6 +29,6 @@ public class Miranda : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity, bullets.transform);
     }
 }
