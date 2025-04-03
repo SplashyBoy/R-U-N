@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 1131122868}
-  spawnPositionOffset: {x: 0, y: 0, z: 100}
+  spawnPosition: {x: -10, y: -1, z: 169.6}
   spawnDelay: 2
 --- !u!4 &241949376
 Transform:
@@ -184,7 +184,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 94.070404, y: 115.979385, z: 22.3}
-  m_Center: {x: 48.020004, y: -53.299995, z: -56.4}
+  m_Center: {x: 48.020004, y: -53.299995, z: -42.4}
 --- !u!54 &241949378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -387,7 +387,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
-<<<<<<< Updated upstream
 --- !u!1 &547718361
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,8 +498,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> Stashed changes
 --- !u!1 &593101980
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,8 +882,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131122868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 71.512}
-  m_LocalScale: {x: 1, y: 1, z: 16.302168}
+  m_LocalPosition: {x: 0, y: -1, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
