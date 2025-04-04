@@ -8,6 +8,7 @@ TagManager:
   - PlaneB
   - Limit
   - Bullet
+  - BulletManager
   layers:
   - Default
   - TransparentFX
