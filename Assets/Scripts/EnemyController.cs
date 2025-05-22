@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -15,8 +16,13 @@ public class EnemyController : MonoBehaviour
     public GameObject deathEffectPrefab;
     public bool rotateToFaceDirection = true;
 
+    [Header("Damage Flash")]
+    public float flashDuration = 0.1f; // Duration in seconds (0.1 = 100 milliseconds)
+
     [Header("References")]
     private Rigidbody rb;
+    private Renderer enemyRenderer;
+    private Color originalColor;
 
     // Events
     public event Action OnEnemyDestroyed;
@@ -29,6 +35,13 @@ public class EnemyController : MonoBehaviour
             rb = gameObject.AddComponent<Rigidbody>();
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        }
+
+        // Get the renderer and store original color
+        enemyRenderer = GetComponent<Renderer>();
+        if (enemyRenderer != null)
+        {
+            originalColor = enemyRenderer.material.color;
         }
     }
 
@@ -65,6 +78,35 @@ public class EnemyController : MonoBehaviour
         {
             Die();
         }
+        else
+        {
+            // Only flash red if enemy survives the damage
+            StartCoroutine(FlashRed());
+        }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        if (enemyRenderer != null)
+        {
+            // Change to red
+            enemyRenderer.material.color = Color.red;
+
+            // Wait for flash duration
+            yield return new WaitForSeconds(flashDuration);
+
+            // Return to original color
+            enemyRenderer.material.color = originalColor;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+            TakeDamage(1);
+        }
     }
 
     void Die()
@@ -82,21 +124,21 @@ public class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
-  /*  void OnCollisionEnter(Collision collision)
-    {
-        // Check if collided with player
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Miranda Miranda = collision.gameObject.GetComponent<Miranda>();
-            if (Miranda != null)
-            {
-                Miranda.TakeDamage(damageToPlayer);
-            }
+    /*  void OnCollisionEnter(Collision collision)
+      {
+          // Check if collided with player
+          if (collision.gameObject.CompareTag("Player"))
+          {
+              Miranda Miranda = collision.gameObject.GetComponent<Miranda>();
+              if (Miranda != null)
+              {
+                  Miranda.TakeDamage(damageToPlayer);
+              }
 
-            // Destroy enemy after hitting player
-            Die();
-        }
-    }*/
+              // Destroy enemy after hitting player
+              Die();
+          }
+      }*/
 
     // Useful for visualization in the editor
     void OnDrawGizmosSelected()
